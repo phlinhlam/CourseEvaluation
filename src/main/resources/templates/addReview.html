@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE-edge"/>
+    <title>Title</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand" href="/"><img src="https://fiverr-res.cloudinary.com/images/t_main1,q_auto,f_auto/gigs/110638206/original/d2baa7c81eb1d2fd7243c886257823d2717d055c/draw-cute-cartoon-penguin-for-you.png" width="50" height="30" class="d-inline-block align-top" alt="">
+        JBC</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+            <li class="nav-item">
+                <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item active">
+                <a class="nav-link" href="/add">Add a Review</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/list">Review List</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+<div class="container" style="color: #63737d; margin-top: 10px; margin-left: 10px">
+    <div class="jumbotron">
+        <h1 style="text-align: center">Course Evaluation Form</h1>
+        <p>Please completely fill out the form</p>
+<!--        This is for radio buttons group-->
+        <form
+              action="#"
+              th:action="@{/process}"
+              th:object="${review}" method="post" >
+            <input hidden th:field="*{review_id}"/>
+            <p>1. How would you rate the course content?<br/>
+            <input type="radio" name="q1" value="Excellent" th:field="*{q1}">Excellent<br/>
+            <input type="radio" name="q1" value="Above Average" th:field="*{q1}">Above Average<br/>
+            <input type="radio" name="q1" value="Average" th:field="*{q1}">Average<br/>
+            <input type="radio" name="q1" value="Fair" th:field="*{q1}">Fair<br/>
+            <input type="radio" name="q1" value="Poor" th:field="*{q1}">Poor<br/>
+            </p>
+
+            <p>2. How would you rate the quality of instruction?<br/>
+            <input type="radio" name="q2" value="Excellent" th:field="*{q2}">Excellent<br/>
+            <input type="radio" name="q2" value="Above Average" th:field="*{q2}">Above Average<br/>
+            <input type="radio" name="q2" value="Average" th:field="*{q2}">Average<br/>
+            <input type="radio" name="q2" value="Fair" th:field="*{q2}">Fair<br/>
+            <input type="radio" name="q2" value="Poor" th:field="*{q2}">Poor<br/>
+            </p>
+
+            <p>3. How would you rate your overall training experience?<br/>
+            <input type="radio" name="q3" value="Excellent" th:field="*{q3}">Excellent<br/>
+            <input type="radio" name="q3" value="Above Average" th:field="*{q3}">Above Average<br/>
+            <input type="radio" name="q3" value="Average" th:field="*{q3}">Average<br/>
+            <input type="radio" name="q3" value="Fair" th:field="*{q3}">Fair<br/>
+            <input type="radio" name="q3" value="Poor" th:field="*{q3}">Poor<br/>
+            </p>
+            <br/><br/>
+            <input type="submit" value="Submit">
+        </form>
+
+
+<!--        <select name="revid">-->
+<!--            <option th:each="review : ${reviews}"-->
+<!--                    th:value="${review.review_id}"-->
+<!--                    th:text="${review.q1}">-->
+
+<!--            </option>-->
+<!--        </select>-->
+
+
+
+
+    </div>
+</div>
+
+
+</body>
+</html>
