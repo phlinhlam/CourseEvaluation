@@ -37,12 +37,13 @@
                 <th>Submission</th>
             </tr>
             <tr th:each="rev : ${reviews}">
+<div th:each="user: ${users}">
                 <td style="text-align: center" th:text="${rev.review_id}"></td>
                 <td style="text-align: center" th:text="${rev.q1}"></td>
                 <td style="text-align: center" th:text="${rev.q2}"></td>
                 <td style="text-align: center" th:text="${rev.q3}"></td>
                 <td style="text-align: center" th:text="${rev.username}"></td>
-
+</div>
                 <td>
                     <a th:href="@{/update/{review_id}(review_id=${rev.review_id})}">Update</a>
                     <a th:href="@{/detail/{review_id}(review_id=${rev.review_id})}">Detail</a>

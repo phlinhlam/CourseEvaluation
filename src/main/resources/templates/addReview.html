@@ -6,6 +6,7 @@
     <title>Title</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
           integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="/css/styles.css">
 </head>
 <body>
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -23,13 +24,16 @@
                 <a class="nav-link" href="/add">Add a Review</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="/list">Review List</a>
+                <a class="nav-link" href="/secure">Review List</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/logout">LogOut</a>
             </li>
         </ul>
     </div>
 </nav>
 <div class="container" style="color: #63737d; margin-top: 10px; margin-left: 10px">
-    <div class="jumbotron">
+    <div class="jumbotron" style="text-align: justify-all">
         <h1 style="text-align: center">Course Evaluation Form</h1>
         <p>Please completely fill out the form</p>
 <!--        This is for radio buttons group-->
@@ -61,19 +65,90 @@
             <input type="radio" name="q3" value="Fair" th:field="*{q3}">Fair<br/>
             <input type="radio" name="q3" value="Poor" th:field="*{q3}">Poor<br/>
             </p>
+
+            <p>4. How would you rate the textbook or handouts?<br/>
+                <input type="radio" name="q4" value="Excellent" th:field="*{q4}">Excellent<br/>
+                <input type="radio" name="q4" value="Above Average" th:field="*{q4}">Above Average<br/>
+                <input type="radio" name="q4" value="Average" th:field="*{q4}">Average<br/>
+                <input type="radio" name="q4" value="Fair" th:field="*{q4}">Fair<br/>
+                <input type="radio" name="q4" value="Poor" th:field="*{q4}">Poor<br/>
+            </p>
+
+            <p>5. How would your rate the classroom environment and setting?<br/>
+                <input type="radio" name="q5" value="Excellent" th:field="*{q5}">Excellent<br/>
+                <input type="radio" name="q5" value="Above Average" th:field="*{q5}">Above Average<br/>
+                <input type="radio" name="q5" value="Average" th:field="*{q5}">Average<br/>
+                <input type="radio" name="q5" value="Fair" th:field="*{q5}">Fair<br/>
+                <input type="radio" name="q5" value="Poor" th:field="*{q5}">Poor<br/>
+            </p>
+
+            <p>6. How would you rate the classroom computer equipment?<br/>
+                <input type="radio" name="q6" value="Excellent" th:field="*{q6}">Excellent<br/>
+                <input type="radio" name="q6" value="Above Average" th:field="*{q6}">Above Average<br/>
+                <input type="radio" name="q6" value="Average" th:field="*{q6}">Average<br/>
+                <input type="radio" name="q6" value="Fair" th:field="*{q6}">Fair<br/>
+                <input type="radio" name="q6" value="Poor" th:field="*{q6}">Poor<br/>
+            </p>
+
+            <h2>Short Response</h2>
+            <div class="form-group d-flex">
+                <label for="description" class="col-form-label col-3">1. What did you like about the class?</label>
+                <textarea type="text"
+                          name="description" id="description"
+                          class="form-control col-9 mx-3"
+                          placeholder="Please type your response here"
+                          th:field="*{qs1}"></textarea>
+                <span th:if="${#fields.hasErrors('qs1')}" th:errors="*{qs1}"></span>
+            </div>
+
+            <div class="form-group d-flex">
+                <label for="description" class="col-form-label col-3">2. What didn't you like about the class?</label>
+                <textarea type="text"
+                          name="description" id="description1"
+                          class="form-control col-9 mx-3"
+                          placeholder="Please type your response here"
+                          th:field="*{qs2}"></textarea>
+                <span th:if="${#fields.hasErrors('qs2')}" th:errors="*{qs2}"></span>
+            </div>
+            <div class="form-group d-flex">
+                <label for="description" class="col-form-label col-3">3. What improvements should you suggest?</label>
+                <textarea type="text"
+                          name="description" id="description2"
+                          class="form-control col-9 mx-3"
+                          placeholder="Please type your response here"
+                          th:field="*{qs3}"></textarea>
+                <span th:if="${#fields.hasErrors('qs3')}" th:errors="*{qs3}"></span>
+            </div>
+
+            <div class="form-group d-flex">
+                <label for="description" class="col-form-label col-3">4. What other classes would you like to see offered?</label>
+                <textarea type="text"
+                          name="description" id="description3"
+                          class="form-control col-9 mx-3"
+                          placeholder="Please type your response here"
+                          th:field="*{qs4}"></textarea>
+                <span th:if="${#fields.hasErrors('qs4')}" th:errors="*{qs4}"></span>
+            </div>
+
+            <div class="form-group d-flex">
+                <label for="description" class="col-form-label col-3">5. What is(are) your reason for taking this class?</label>
+                <textarea type="text"
+                          name="description" id="description4"
+                          class="form-control col-9 mx-3"
+                          placeholder="Please type your response here"
+                          th:field="*{qs5}"></textarea>
+                <span th:if="${#fields.hasErrors('qs5')}" th:errors="*{qs5}"></span>
+            </div>
+
+            <p style="text-indent: 20px">What section are you in?<br/>
+                <input type="radio" name="section" value="October JBC" th:field="*{section}" style="text-indent: 20px">October Java Bootcamp<br/>
+                <input type="radio" name="section" value="August JBC" th:field="*{section}" style="text-indent: 20px">August Java Bootcamp<br/>
+
+            </p>
+
             <br/><br/>
             <input type="submit" value="Submit">
         </form>
-
-
-<!--        <select name="revid">-->
-<!--            <option th:each="review : ${reviews}"-->
-<!--                    th:value="${review.review_id}"-->
-<!--                    th:text="${review.q1}">-->
-
-<!--            </option>-->
-<!--        </select>-->
-
 
 
 

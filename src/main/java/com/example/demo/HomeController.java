@@ -48,10 +48,8 @@ public class HomeController {
     public String login() {
         return "login";
     }
-
     @Autowired
     UserRepository userRepository;
-
     @Autowired
     ReviewRepository reviewRepository;
 
@@ -59,6 +57,8 @@ public class HomeController {
     public String secure(Principal principal, Model model) {
         String username = principal.getName();
         model.addAttribute("user", userRepository.findByUsernameIgnoreCase(username));
+        //insert here a checking for username
+        model.addAttribute("reviews", reviewRepository.findAll());
         return "secure";
     }
 
@@ -71,7 +71,7 @@ public class HomeController {
 
     //PROBLEM!!!
     @PostMapping("/process")
-    public String processReview(@Valid @ModelAttribute("review") Review review) {
+    public String processReview(@Valid @ModelAttribute("review") Review review, User user) {
         //est. review in db
         Review reviewDB;
         long revid = review.getReview_id();
@@ -81,6 +81,13 @@ public class HomeController {
             reviewDB.setQ1(review.getQ1());
             reviewDB.setQ2(review.getQ2());
             reviewDB.setQ3(review.getQ3());
+            reviewDB.setQ3(review.getQ4());
+            reviewDB.setQ3(review.getQ5());
+            reviewDB.setQ3(review.getQ6());
+
+            reviewDB.setQs1(review.getQs1());
+            reviewDB.setQs2(review.getQs2());
+            reviewDB.setQs3(review.getQs3());
             reviewRepository.save(reviewDB);
         } else {
             //create a new review when user enter the information
@@ -93,30 +100,18 @@ public class HomeController {
             reviewDB.setUser(currentUser);
             reviewDB.setUsername(currentUser.getUsername());
             reviewRepository.save(reviewDB);
-
         }
         return "showReview";
     }
 
-    @RequestMapping("/list")
-    public String listRev(Model model) {
-        model.addAttribute("reviews", reviewRepository.findAll());
-        return "listReview";
+
+    @RequestMapping("/show/{id}")
+    public String showRev(@PathVariable("id") long id, Model model) {
+        if(userService.getAuthenticatedUser() !=null) {
+            model.addAttribute("user", userService.getAuthenticatedUser());
+        }
+        model.addAttribute("reviews", reviewRepository.findById(id).get());
+        return "showReview";
     }
 
-
-//    //show details of a specific message
-//    @RequestMapping("/detail/{id}")
-//    public String detailMessage(@PathVariable("id") long id, Model model)
-//    {
-//        model.addAttribute("messages", messageRepository.findById(id));
-//        return "messageDetail";
-//    }
-//
-//    @RequestMapping("/update/{id}")
-//    public String updateMessage(@PathVariable("id") long messid, Model model)
-//    {
-//        model.addAttribute("messages", messageRepository.findById(messid));
-//        return "addMessage";
-//    }
 }

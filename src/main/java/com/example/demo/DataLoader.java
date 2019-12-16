@@ -34,12 +34,10 @@ public class DataLoader implements CommandLineRunner {
         //Review constructor:
         // String q1, String q2, String q3, String q4, String q5, String q6,
         // String qs1, String qs2, String qs3, String qs4, String qs5, String section
-
-
         Review rev1 =  new Review("Excellent","Above Average","Excellent","Fair","Excellent","Average",
                 "The intensive of it","I don't like to have challenge every week","Improvements to have more time with JS",
                 "I would like to see a SQL Development class","Reason for taking is I like to do full stack Java","Section: OCT19");
-
+        rev1.setUsername(user1.getUsername());
         reviewRepository.save(rev1);
         //create review class that's linked with user (one to one relationship) (maybe?)
 
