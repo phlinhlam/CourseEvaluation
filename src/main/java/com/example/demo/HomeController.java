@@ -27,9 +27,6 @@ public class HomeController {
         if (result.hasErrors()) {
             return "register";
         } else {
-            //use this line to save new user as user
-            //userService.saveUser(user);
-            //save new user as admin and allows it to have full access
             userService.saveUser(user);
             model.addAttribute("message", "Admin Account Created");
         }
@@ -39,8 +36,6 @@ public class HomeController {
 
     @RequestMapping("/")
     public String index() {
-//        model.addAttribute("reviews",reviewRepository.findAll());
-//        model.addAttribute("users", userRepository.findAll());
         return "index";
     }
 
@@ -58,7 +53,7 @@ public class HomeController {
         String username = principal.getName();
         model.addAttribute("user", userRepository.findByUsernameIgnoreCase(username));
         //insert here a checking for username
-        model.addAttribute("reviews", reviewRepository.findAll());
+        model.addAttribute("reviews", reviewRepository.findByUsername(username));
         return "secure";
     }
 
@@ -69,13 +64,12 @@ public class HomeController {
         return "addReview";
     }
 
-    //PROBLEM!!!
+
     @PostMapping("/process")
     public String processReview(@Valid @ModelAttribute("review") Review review, User user) {
         //est. review in db
         Review reviewDB;
         long revid = review.getReview_id();
-        //option to edit review if the review id is already exist
         if (reviewRepository.existsById(revid)) {
             reviewDB = reviewRepository.findById(revid).get();
             reviewDB.setQ1(review.getQ1());

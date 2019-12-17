@@ -8,7 +8,8 @@
     <link rel="stylesheet" type="text/css" th:href="@{/css/mystyle.css}">
 </head>
 <body><nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <a class="navbar-brand" href="/"><img src="https://fiverr-res.cloudinary.com/images/t_main1,q_auto,f_auto/gigs/110638206/original/d2baa7c81eb1d2fd7243c886257823d2717d055c/draw-cute-cartoon-penguin-for-you.png" width="50" height="30" class="d-inline-block align-top" alt="">
+    <a class="navbar-brand" href="/">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRfLf8aSBB9fX0PccEdliO7Gn1pCmYvQX_jreItiaQlTwRyTrnh" width="50" height="30" class="d-inline-block align-top" alt="">
         JBC</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -28,7 +29,7 @@
 </div>
 </nav>
 <div class="container" style="color: #63737d; margin-top: 10px; margin-left: 10px">
-    <div class="jumbotron">
+    <div class="jumbotron" style="text-align: center">
         <h1>Login Page</h1>
         <br/>
         <div th:if="${param.error}">
@@ -40,7 +41,8 @@
         <form th:action="@{/login}" method="post">
             <div><label>Username <input type="text" name="username"/></label></div>
             <div><label>Password: <input type="password" name="password"/></label></div>
-            <div><input type="submit" value="Sign in"/></div>
+            <br/>
+            <div>    <input type="submit" class="btn btn-info" style="size: 5px; background-color: #63aaab" value="Login"/></div>
         </form>
     </div>
 </div>

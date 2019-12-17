@@ -6,11 +6,12 @@
     <title>Title</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
           integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <link rel="stylesheet" href="/css/styles.css">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/mystyle.css}">
 </head>
 <body>
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <a class="navbar-brand" href="/"><img src="https://fiverr-res.cloudinary.com/images/t_main1,q_auto,f_auto/gigs/110638206/original/d2baa7c81eb1d2fd7243c886257823d2717d055c/draw-cute-cartoon-penguin-for-you.png" width="50" height="30" class="d-inline-block align-top" alt="">
+    <a class="navbar-brand" href="/">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRfLf8aSBB9fX0PccEdliO7Gn1pCmYvQX_jreItiaQlTwRyTrnh" width="50" height="30" class="d-inline-block align-top" alt="">
         JBC</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -33,7 +34,7 @@
     </div>
 </nav>
 <div class="container" style="color: #63737d; margin-top: 10px; margin-left: 10px">
-    <div class="jumbotron" style="text-align: justify-all">
+    <div class="jumbotron" style="align-content: center">
         <h1 style="text-align: center">Course Evaluation Form</h1>
         <p>Please completely fill out the form</p>
 <!--        This is for radio buttons group-->
@@ -125,6 +126,7 @@
                 <textarea type="text"
                           name="description" id="description3"
                           class="form-control col-9 mx-3"
+                          style="size: 40px"
                           placeholder="Please type your response here"
                           th:field="*{qs4}"></textarea>
                 <span th:if="${#fields.hasErrors('qs4')}" th:errors="*{qs4}"></span>
@@ -141,13 +143,14 @@
             </div>
 
             <p style="text-indent: 20px">What section are you in?<br/>
-                <input type="radio" name="section" value="October JBC" th:field="*{section}" style="text-indent: 20px">October Java Bootcamp<br/>
-                <input type="radio" name="section" value="August JBC" th:field="*{section}" style="text-indent: 20px">August Java Bootcamp<br/>
+                <input type="radio" name="section" value="October JBC" th:field="*{section}" style="text-indent: 50px">October Java Bootcamp <br/>
+                <input type="radio" name="section" value="August JBC" th:field="*{section}" style="text-indent: 50px">August Java Bootcamp<br/>
 
             </p>
 
             <br/><br/>
-            <input type="submit" value="Submit">
+            <input type="submit" class="btn btn-info" style="size: 5px; background-color: #63aaab" value="Submit"/>
+
         </form>
 
 
